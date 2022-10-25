@@ -13,7 +13,7 @@ public class Ex01_Var {
 		System.out.println(intLiteral);
 		System.out.println(octal);
 		System.out.println(hexa);
-//		System.out.printf("%d, %d, %d%n", intLiteral, octal, hexa);
+		System.out.printf("%d, %d, %d%n", intLiteral, octal, hexa);
 		
 		double doubleLiteral = 3.14159;		// floating point(실수)
 		char charLiteral = 'a';		// single quote(문자, 글자 1개)
