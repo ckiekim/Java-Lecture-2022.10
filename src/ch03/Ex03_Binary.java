@@ -29,8 +29,18 @@ public class Ex03_Binary {
 		
 		// 비교 연산자
 		System.out.println(3 == 3);
+		// 실수 비교
 		System.out.println(3.0 == 3.0); 	// 실수연산에서 같으냐를 비교하는 것은 위험함
-		System.out.println(Math.abs(3.0 - 1.2+3.3-1.5) < 1e-15); 	// 차이의 절대값이 1E-15 보다 작냐로 비교
+		System.out.println(Math.abs(3.0 - (1.2+3.3-1.5)) < 1e-15); 	// 차이의 절대값이 1E-15 보다 작냐로 비교
+		
+		// 문자열 비교 - 문자열은 참조형
+		String str1 = "홍길동";			// 리터럴로 문자열 할당(Heap memory)
+		String str2 = "홍길동";
+		String str3 = new String("홍길동");		// 문자열 객체를 만들어서 할당(Stack memory)
+		System.out.println(str1 + str2 + str3);
+		System.out.println(str1 == str2); 		// 동일하게 리터럴이 저장되어 있는 곳을 가리킴
+		System.out.println(str1 == str3); 		// 다른 기억장소에 보관되어 있어 false
+		System.out.println(str1.equals(str3));	// 올바른 비교 방법
 	}
 	
 	private static int safeAdd(int x, int y) {		// method, 다른 언어에서는 함수
