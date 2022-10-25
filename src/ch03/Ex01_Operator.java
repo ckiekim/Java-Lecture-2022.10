@@ -23,6 +23,9 @@ public class Ex01_Operator {
 		for (int i=1; i<=10; i++)
 			sum += i;
 		System.out.println(sum);
+		
+		short s1 = 1;
+		short ss = (short)-s1;		// 단항 연산자 -를 하면 결과가 int type이 됨
 	}
 
 }
