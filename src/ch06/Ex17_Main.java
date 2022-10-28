@@ -13,6 +13,14 @@ public class Ex17_Main {
 		System.out.println(myArray.getMax(intArray));
 		System.out.println(myArray.getAvg(intArray));
 		System.out.println(myArray.getSumOfSquare(intArray));
+		
+		// intArray 의 분산 = E(X*X) - E(X)*E(X)
+		double var = myArray.getSumOfSquare(intArray) / intArray.length -
+					 myArray.getAvg(intArray) * myArray.getAvg(intArray);
+		double std = Math.sqrt(var);
+		System.out.println("평균: " + myArray.getAvg(intArray));
+		System.out.println("분산: " + var);
+		System.out.println("표준편차: " + std);
 	}
 
 }
