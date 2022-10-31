@@ -17,7 +17,7 @@ public class Ex12_Animal {
 //		animal.catMethod();		// 사용할 수 없음
 		
 		Object obj = new Animal();
-		obj = new Cat();
+		obj = new Cow();
 		obj = new Dog();
 	}
 
