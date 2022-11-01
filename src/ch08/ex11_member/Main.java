@@ -1,11 +1,11 @@
-package ch08;
+package ch08.ex11_member;
 
 import java.util.Scanner;
 
-public class Ex11_Main {
+public class Main {
 
 	public static void main(String[] args) {
-		Ex11_MemberService memberService = new Ex11_ArrayMemberService();
+		MemberService memberService = new ArrayMemberService();
 		memberService.register("kim", "9876", "김자바");
 		memberService.register("hong", "12345", "홍길동");
 		memberService.register("park", "1234", "박자바");

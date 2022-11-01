@@ -1,9 +1,9 @@
-package ch08;
+package ch08.ex11_member;
 
-public interface Ex11_MemberService {
+public interface MemberService {
 	void register(String id, String password, String name);
 	void printAllMembers();
-	Ex11_Member findById(String id);
+	Member findById(String id);
 	boolean login(String id, String password);
 	void logout(String id);
 }

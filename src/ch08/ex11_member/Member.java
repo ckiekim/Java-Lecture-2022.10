@@ -1,12 +1,12 @@
-package ch08;
+package ch08.ex11_member;
 
-public class Ex11_Member {
+public class Member {
 	private String id;
 	private String password;
 	private String name;
 	
-	Ex11_Member() {}
-	Ex11_Member(String id, String password, String name) {
+	Member() {}
+	Member(String id, String password, String name) {
 		super();
 		this.id = id;
 		this.password = password;
