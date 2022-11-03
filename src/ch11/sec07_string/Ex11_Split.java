@@ -12,6 +12,14 @@ public class Ex11_Split {
 		String fruits2 = "사과, 대추. 망고: 포도";
 		String[] fruitArr2 = fruits2.split("[,|.|:] ");		// 정규 표현식
 		System.out.println(Arrays.toString(fruitArr2));
+		
+		String paths = System.getenv("PATH");
+		System.out.println(paths);
+		String[] pathArr = paths.split(";");
+//		for (String path: pathArr)
+//			System.out.println(path);
+		String pathStr = String.join("\n", pathArr);
+		System.out.println(pathStr);
 	}
 
 }
