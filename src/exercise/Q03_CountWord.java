@@ -15,7 +15,11 @@ public class Q03_CountWord {
 		System.out.println(text.length());
 //		String cleanText = text.replaceAll("[\\.,\\?]", "");	// 구둣점 제거
 		String cleanText = text.replaceAll("[^A-Za-z -]", "");
+		String ct = text.replace(",", "")
+						.replace(".", "")
+						.replace("?", "");
 		System.out.println(cleanText.length());
+		System.out.println(ct.length());
 		
 		String[] textArr = cleanText.split(" ");
 		System.out.println("단어의 갯수: " + textArr.length);
