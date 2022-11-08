@@ -23,5 +23,12 @@ public class Ex01_NoArgsNoReturnMain {
 		Runnable r = () -> System.out.println("method call");
 		r.run();
 	}
+}
 
+class MyFunctionalInterface implements Ex01_MyFunctionalInterface {
+	@Override
+	public void method() {
+		String str = "method call";
+		System.out.println(str);
+	}
 }
