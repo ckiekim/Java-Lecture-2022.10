@@ -19,6 +19,9 @@ public class Ex01_NoArgsNoReturnMain {
 		
 		fi = () -> System.out.println("method call");
 		fi.method();
+		
+		Runnable r = () -> System.out.println("method call");
+		r.run();
 	}
 
 }

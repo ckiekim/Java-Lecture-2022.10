@@ -1,5 +1,7 @@
 package ch14_lambda;
 
+import java.util.function.Consumer;
+
 /**
  * With argument, no return value
  */
@@ -19,6 +21,9 @@ public class Ex02_ArgumentsMain {
 		
 		fi = x -> System.out.println(x * x);
 		fi.method(5);
+		
+		Consumer<Integer> c = x -> System.out.println(x * x);
+		c.accept(5);
 	}
 
 }

@@ -1,5 +1,7 @@
 package ch14_lambda;
 
+import java.util.function.BiFunction;
+
 /**
  * With arguments, with return value
  */
@@ -22,6 +24,9 @@ public class Ex03_ReturnMain {
 
 		fi = (x, y) -> sum(x, y);
 		System.out.println(fi.method(3, 4));
+		
+		BiFunction<Integer, Integer, Integer> f = (x, y) -> x + y;
+		System.out.println(f.apply(3, 4));
 	}
 
 	static int sum(int a, int b) {
