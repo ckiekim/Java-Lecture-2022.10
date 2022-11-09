@@ -19,5 +19,4 @@ public class Ex01_Properties {
 		System.out.println(prop.getProperty("password"));
 		System.out.println(prop.getProperty("admin"));
 	}
-
 }
