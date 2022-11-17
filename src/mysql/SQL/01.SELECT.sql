@@ -43,6 +43,9 @@ SELECT * FROM city
 	WHERE District='Seoul' 
 	OR District='Inchon' OR District='Kyonggi';
 
+SELECT * FROM city
+	WHERE District IN ('Seoul','Incheon','Kyonggi');
+
 # 국내의 인구수 100만 이상인 도시중 인구수가 홀수인 도시
 SELECT * FROM city
 	WHERE countrycode='KOR' 
@@ -208,3 +211,19 @@ SELECT l.Name AS `Country`, r.`Language` FROM country AS l
 	WHERE l.Continent = 'Asia'
 	AND r.IsOfficial = TRUE;
 
+# 전 세계에서 인구가 가장 많은 10개 도시에서 사용하는 공식언어는?
+#	(도시명, 인구수, 언어명)
+SELECT l.`Name`, l.Population, r.`Language` FROM city AS l
+	JOIN countrylanguage AS r
+	ON l.CountryCode = r.CountryCode
+	WHERE r.IsOfficial = TRUE 
+	ORDER BY l.Population DESC 
+	LIMIT 10;
+
+/*
+ * 1.8 Sub Query
+ */
+# 서울보다 인구가 많은 도시
+SELECT * FROM city
+	WHERE Population > 
+	(SELECT Population FROM city WHERE `Name`='Seoul');
