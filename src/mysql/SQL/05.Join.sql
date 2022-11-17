@@ -48,3 +48,57 @@ INSERT INTO girlGroup (name, debut, hitSongId)
 	('2NE1', '2009-07-08', 106), ('f(x)', '2011-04-20', 108),
 	('시크릿', '2011-01-06', 109), ('레인보우', '2010-08-12', 110),
 	('애프터 스쿨', '2009-11-25', 120), ('포미닛', '2009-08-28', 121);
+
+/*
+ * 3. Table join
+ */
+# Inner Join
+SELECT r.`name`, r.debut, l.title, l.lyrics 
+	FROM song AS l
+	JOIN girlGroup AS r
+	ON l.sid = r.hitSongId;
+
+# Left Outer join
+SELECT r.`name`, r.debut, l.title, l.lyrics 
+	FROM song AS l
+	LEFT OUTER JOIN girlGroup AS r
+	ON l.sid = r.hitSongId;
+
+# Right Outer join
+SELECT r.`name`, r.debut, l.title, l.lyrics 
+	FROM song AS l
+	RIGHT OUTER JOIN girlGroup AS r
+	ON l.sid = r.hitSongId;
+
+# Full Outer join - Left Outer Join UNION Right Outer Join
+SELECT r.`name`, r.debut, l.title, l.lyrics 
+	FROM song AS l
+	LEFT OUTER JOIN girlGroup AS r
+	ON l.sid = r.hitSongId
+UNION 
+SELECT r.`name`, r.debut, l.title, l.lyrics 
+	FROM song AS l
+	RIGHT OUTER JOIN girlGroup AS r
+	ON l.sid = r.hitSongId;
+
+/* 연습문제 */
+# 데뷔 일자가 빠른 5개 걸그룹의 힛트송은? (그룹명, 곡명, 데뷔일자)
+SELECT l.name, r.title, l.debut FROM girlgroup AS l
+	JOIN song AS r
+	ON l.hitSongId = r.sid
+	ORDER BY debut
+	LIMIT 5;
+
+# 2007년도에 데뷔한 걸그룹은?
+SELECT `name`, debut FROM girlgroup
+	WHERE debut BETWEEN DATE('2007-01-01') AND DATE('2007-12-31');
+
+SELECT `name`, debut FROM girlgroup
+	WHERE debut LIKE '2007%';
+
+# 2009년도에 데뷔한 걸그룹의 히트송은?
+#	(걸그룹 이름, 데뷔일, 히트송)
+SELECT l.name, l.debut, r.title FROM girlgroup AS l
+	JOIN song AS r
+	ON l.hitSongId = r.sid
+	WHERE l.debut BETWEEN DATE('2009-01-01') AND DATE('2009-12-31');
