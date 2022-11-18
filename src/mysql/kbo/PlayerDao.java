@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import mysql.customer.Customer;
-
 public class PlayerDao {
 	private String host;
 	private String user;
