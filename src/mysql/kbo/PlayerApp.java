@@ -71,7 +71,7 @@ public class PlayerApp {
 		
 		System.out.print("이름(" + p.getName() + ")> ");
 		String name = scan.nextLine();
-		name = (name.length() == 0) ? p.getName() : name;
+		name = (name.length() == 0) ? p.getName() : name;	// Enter를 치면 기존 값을 변경하지 않음
 		
 		System.out.print("포지션(" + p.getPosition() + ")> ");
 		String position = scan.nextLine();
