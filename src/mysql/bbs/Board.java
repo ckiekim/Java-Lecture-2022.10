@@ -1,4 +1,4 @@
-package mysql.erd;
+package mysql.bbs;
 
 import java.time.LocalDateTime;
 
@@ -29,7 +29,8 @@ public class Board {
 	@Override
 	public String toString() {
 		return "Board [" + bid + ", " + btitle + ", " + bcontent + ", " + uid + ", "
-				+ modTime + ", " + viewCount + ", " + replyCount + "]";
+				+ modTime.toString().substring(2,16).replace("T"," ") + ", " + viewCount 
+				+ ", " + replyCount + "]";
 	}
 	public int getBid() {
 		return bid;

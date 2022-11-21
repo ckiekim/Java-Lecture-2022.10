@@ -1,4 +1,4 @@
-package mysql.erd;
+package mysql.bbs;
 
 import java.time.LocalDateTime;
 
@@ -26,8 +26,9 @@ public class Reply {
 	}
 	@Override
 	public String toString() {
-		return "Reply [" + rid + ", " + rcontent + ", " + regTime + ", " + isMine + ", "
-				+ uid + ", " + bid + "]";
+		return "Reply [" + rid + ", " + rcontent + ", "
+				+ regTime.toString().substring(2,16).replace("T"," ") + ", " 
+				+ isMine + ", " + uid + ", " + bid + "]";
 	}
 	public int getRid() {
 		return rid;
