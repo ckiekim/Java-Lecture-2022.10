@@ -115,8 +115,10 @@ public class BoardDao {
 		String sql = "SELECT * FROM board ORDER BY bid DESC;";
 		List<Board> list = new ArrayList<>();
 		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+//			Statement stmt = conn.createStatement();
+//			ResultSet rs = stmt.executeQuery(sql);
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
 			while (rs.next()) {
 				Board b = new Board();
 				b.setBid(rs.getInt(1));
@@ -128,7 +130,7 @@ public class BoardDao {
 				b.setReplyCount(rs.getInt(7));
 				list.add(b);
 			}
-			rs.close(); stmt.close(); conn.close();
+			rs.close(); pStmt.close(); conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
