@@ -8,13 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 public class BoardDao {
 	private String host;
@@ -50,6 +47,66 @@ public class BoardDao {
 		}
 		return conn;
 	}
+	
+	/* 부가 기능 */
+	public void incrementViewCount(int bid) {
+		Connection conn = myGetConnection();
+		String sql = "UPDATE board SET viewCount=viewCount+1 WHERE bid=?;";
+		try {
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, bid);
+			
+			pStmt.executeUpdate();
+			pStmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int getCount() {
+		Connection conn = myGetConnection();
+		String sql = "SELECT COUNT(*) FROM board;";
+		int count = 0;
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+			rs.close(); stmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public List<Bbs> getBbsList(int offset) {
+		Connection conn = myGetConnection();
+		String sql = "SELECT b.bid, b.btitle, u.uname, b.modTime, b.viewCount, b.replyCount"
+				+ "	FROM board AS b JOIN users AS u ON b.uid=u.uid"
+				+ "	LIMIT 10 OFFSET ?;";
+		List<Bbs> list = new ArrayList<>();
+		try {
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setInt(1, offset);
+			ResultSet rs = pStmt.executeQuery();
+			while (rs.next()) {
+				Bbs b = new Bbs();
+				b.setBid(rs.getInt(1));
+				b.setBtitle(rs.getString(2));
+				b.setUname(rs.getString(3));
+				b.setModTime(LocalDateTime.parse(rs.getString(4).replace(" ", "T")));
+				b.setViewCount(rs.getInt(5));
+				b.setReplyCount(rs.getInt(6));
+				list.add(b);
+			}
+			rs.close(); pStmt.close(); conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	/* 부가 기능 끝 */
 	
 	public void deleteBoard(int bid) {
 		Connection conn = myGetConnection();

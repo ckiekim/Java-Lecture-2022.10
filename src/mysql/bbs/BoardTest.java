@@ -14,8 +14,17 @@ public class BoardTest {
 //		board.setViewCount(2);
 //		dao.updateBoard(board);
 		
+		dao.incrementViewCount(3);
+		int count = dao.getCount();
+		System.out.println(count);
+		
 		List<Board> list = dao.listBoard();
 		for (Board b: list)
+			System.out.println(b);
+		System.out.println();
+		
+		List<Bbs> bbsList = dao.getBbsList(0);
+		for (Bbs b: bbsList)
 			System.out.println(b);
 //		System.out.println(LocalDateTime.parse("2022-11-21 17:10:09".replace(" ", "T")));
 //		System.out.println(LocalDateTime.parse("2022-11-21 17:10:09"));
